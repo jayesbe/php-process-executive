@@ -75,17 +75,12 @@ class Executive
         $this->control->reloadResources();
         $resourcesClosed = false;
       }
-        
-      try {
-        // loop our currently processing procs and clear out the completed ones
-        foreach ($this->procs as $pid => $pidval) {
-          $waitpid = pcntl_waitpid($pid, $status, WNOHANG | WUNTRACED);
-          if ($waitpid == 0) continue;
-          unset($this->procs[$pid]);
-        }
-      }
-      catch (Exception $e) {
-        // need access to logger
+
+      // loop our currently processing procs and clear out the completed ones
+      foreach ($this->procs as $pid => $pidval) {
+        $waitpid = pcntl_waitpid($pid, $status, WNOHANG | WUNTRACED);
+        if ($waitpid == 0) continue;
+        unset($this->procs[$pid]);
       }
     }
 
