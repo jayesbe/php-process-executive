@@ -1,2 +1,3 @@
-# php-process-controller
-Execute atomic operations in forked processes. 
+# php-process-executive
+
+Execute forked processes.
