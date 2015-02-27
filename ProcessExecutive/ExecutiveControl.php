@@ -16,35 +16,37 @@ namespace ProcessExecutive;
  */
 interface ExecutiveControl
 {
+
     /**
      * Close parent resources
      */
     public function closeResources();
-    
+
     /**
      * Reload parent resources
      */
     public function reloadResources();
-    
+
     /**
+     *
      * @return boolean
      */
     public function areResourcesClosed();
-    
+
     /**
      * Returns the max number of processes the executive will allow to be executed at once
-     * 
+     *
      * @return int
      */
     public function getMaxProcesses();
-    
+
     /**
      * Return's an item or items to process from the queue
-     * 
+     *
      * @return mixed
      */
     public function getProcessItem(&$queue);
-    
+
     /**
      * Executes in the child process
      */

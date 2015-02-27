@@ -16,17 +16,18 @@ namespace ProcessExecutive;
  */
 interface ExecutiveDaemonControl extends ExecutiveControl
 {
+
     /**
      * return a queue of items
-     * 
+     *
      * @return array
      */
     public function getQueue();
-    
+
     /**
-     * Should the daemon stop ?  
-     * 
-     * @return boolean true to stop | false to continue 
+     * Should the daemon stop ?
+     *
+     * @return boolean true to stop | false to continue
      */
     public function stop();
 }
