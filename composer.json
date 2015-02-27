@@ -1,0 +1,26 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"ProcessExecutive" : "ProcessExecutive"
+		}
+	},
+	"support" : {
+		"email" : "jayesbe@users.noreply.github.com",
+		"wiki" : "https://github.com/jayesbe/php-process-executive/wiki",
+		"source" : "https://github.com/jayesbe/php-process-executive"
+	},
+	"authors" : [{
+			"name" : "Jayes Be",
+			"email" : "jayesbe@users.noreply@github.com",
+			"role" : "Architect"
+		}
+	],
+	"license" : "MIT",
+	"homepage" : "https://github.com/jayesbe/php-process-executive",
+	"name" : "PHP Process Executive",
+	"description" : "Control execution of script in child processes",
+	"keywords" : [
+		"PHP",
+		"PCNTL"
+	]
+}
