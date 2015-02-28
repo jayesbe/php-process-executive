@@ -40,7 +40,7 @@ class ExecutiveDaemon extends Executive
         }
         
         // daemon is being exited..
-        if ($this->getControl()->areResourcesClosed()) {
+        if ($this->areResourcesClosed()) {
             $this->getControl()->reloadResources();
         }
         

@@ -28,12 +28,6 @@ interface ExecutiveControl
     public function reloadResources();
 
     /**
-     *
-     * @return boolean
-     */
-    public function areResourcesClosed();
-
-    /**
      * Returns the max number of processes the executive will allow to be executed at once
      *
      * @return int
