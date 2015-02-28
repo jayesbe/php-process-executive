@@ -38,7 +38,7 @@ class Executive
      */
     protected function getControl()
     {
-        return $control;
+        return $this->control;
     }
 
     /**
