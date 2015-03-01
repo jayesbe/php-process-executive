@@ -29,7 +29,7 @@ $ pecl install pcntl
 Usage
 -----
 
-Here is a sample implementation of a Symfony2 Command using ProcessExecute
+Here is a sample implementation of a Symfony2 Command using ProcessExecutive
 
 ```php
 namespace FooBar\AppBundle\Command;
@@ -111,7 +111,7 @@ EOF
         $processor = new Executive($this);
         
         // your queue can be anything.
-        $queue = array(0 => $this->popSize);
+        $queue = array(0 => $this->userSize);
         
         // execute our queue
         $processor->execute($queue);
@@ -143,7 +143,7 @@ EOF
         // handle your queue item.
         // since we are generating users and our queue only contains a count
         // we will generate a user id and return that as our item
-        // we will then decreate the size of users we need to generate
+        // we will then decrease the size of users we need to generate
         // the system will halt processing when the queue is empty
         
         if ($queue[0] == 0) {
