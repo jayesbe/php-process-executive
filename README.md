@@ -107,7 +107,7 @@ EOF
         $doctrine = $this->getContainer()->get('doctrine');
         $em = $doctrine->getManager();       
         
-        // we need to create our ProcessController here
+        // we need to create our Executive here
         $processor = new Executive($this);
         
         // your queue can be anything.
