@@ -1,4 +1,4 @@
-
+{
 	"name" : "jayesbe/php-process-executive",
 	"type" : "project",
 	"description" : "Control execution of script in child processes",
