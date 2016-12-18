@@ -62,6 +62,6 @@ class ExecutiveDaemon extends Executive
      */
     protected function getControl()
     {
-        return $this->getControl();
+        return parent::getControl();
     }
 }
