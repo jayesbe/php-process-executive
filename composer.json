@@ -2,7 +2,7 @@
 	"name" : "jayesbe/php-process-executive",
 	"type" : "project",
 	"description" : "Control execution of script in child processes",
-	"version": "0.9.1",
+	"version": "0.9.4",
 	"homepage" : "https://github.com/jayesbe/php-process-executive",
 	"license" : "MIT",
 	"support" : {
