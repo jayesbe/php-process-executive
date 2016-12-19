@@ -96,13 +96,7 @@ class Executive
             }
             
             // loop our currently processing procs and clear out the completed ones
-            foreach ( $this->procs as $pid => $pidval ) {
-                $waitpid = pcntl_waitpid($pid, $status, WNOHANG | WUNTRACED);
-                if ($waitpid == 0) {
-                    continue;
-                }
-                unset($this->procs[$pid]);
-            }
+            $this->wait();
         }
         
         // we have to check here again if the connection is closed.
@@ -112,20 +106,61 @@ class Executive
         }
         
         // now clean up any remaining process
-        while ( ! empty($this->procs) ) {
-            $pid = array_shift($this->procs);
-            $waitpid = pcntl_waitpid($pid, $status, WNOHANG | WUNTRACED);
-            if ($waitpid == 0) {
-                array_push($this->procs, $pid);
-            }
-            else {
-                $this->real_sleep(1);
-            }
-        }
+        $this->waitpids();
     }
 
     /**
-     *
+     * 
+     */
+    protected function waitpids()
+    {
+    	foreach ($this->procs as $pid) {
+    		$waitpid = pcntl_waitpid($pid, $status, WNOHANG | WUNTRACED);
+    		if ($waitpid !== 0) {
+    			$this->check($pid, $status);
+    		}
+    	}
+    	
+    	// if proces count isnt 0, lets just wait (suspend execution)
+    	if (count($this->procs) !== 0) {
+    		$pid = pcntl_wait($status, WUNTRACED);
+    		$this->check($pid, $status);
+    		$this->waitpids();
+    	}
+    }
+    
+    /**
+     * 
+     */
+    protected function wait()
+    {
+    	while (($pid = pcntl_wait($status, WNOHANG | WUNTRACED)) !== 0) {
+    		$this->check($pid, $status);
+    	}
+    	
+    	// if the procs count is at the max lets just wait (suspend execution)
+    	if (count($this->procs) == $this->maxProcs) {
+    		$pid = pcntl_wait($status, WUNTRACED);
+    		$this->check($pid, $status);
+    		$this->wait();
+    	}
+    }
+    
+    /**
+     * 
+     * @param int $pid
+     * @param int $status
+     */
+    protected function check($pid, $status)
+    {
+    	if (pcntl_wifstopped($status)) {
+    		posix_kill($pid, SIGKILL);
+    	}
+    	unset($this->procs[$pid]);
+    }
+    
+    /**
+     * @deprecated
      * @param int $seconds            
      */
     protected function real_sleep($seconds)
