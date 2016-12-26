@@ -134,7 +134,7 @@ class Executive
      */
     protected function wait()
     {
-    	while (($pid = pcntl_wait($status, WNOHANG | WUNTRACED)) !== 0) {
+    	while (($pid = pcntl_wait($status, WNOHANG | WUNTRACED)) > 0) {
     		$this->check($pid, $status);
     	}
     	
