@@ -6,7 +6,7 @@ Execute forked processing easily.
 **Features**
 
   * Execute many concurrent child processes keeping the parent process clean. 
-  * Execute as a daemon to keep the parent process alive. Combine with CRON and forever.js for an effective and lightweight PHP Daemon. 
+  * Execute as a daemon to keep the parent process alive. Combine with CRON and supervisor for an effective and lightweight PHP Daemon. 
 
 **Requirements**
 
